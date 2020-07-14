@@ -13,14 +13,14 @@ app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`)
 })
 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public/html/index.html'))
-})
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'public/html/index.html'))
+// })
 
-app.get('/about', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public/html/about.html'))
-})
+// app.get('/about', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'public/html/about.html'))
+// })
 
-app.get('/contact', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public/html/contact.html'))
-})
+// app.get('/contact', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'public/html/contact.html'))
+// })
