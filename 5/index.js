@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser")
 
 // creating express app
 const app = new express();
@@ -10,6 +11,8 @@ const app = new express();
 // app settings
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended}))
 
 // database connection
 mongoose.connect("mongodb://localhost:27017/my_database", {
@@ -36,3 +39,13 @@ app.get("/contact", (req, res) => {
 app.get("/post", (req, res) => {
   res.render("post");
 });
+
+app.get("/posts/new", (req, res) => {
+  res.render("create");
+});
+
+app.post("/posts/store", (req, res) => {
+  console.log(req)
+  console.log(req.body)
+  res.redirect('/')
+}) 
