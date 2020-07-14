@@ -1,0 +1,1 @@
+Make alias for common instructions!
