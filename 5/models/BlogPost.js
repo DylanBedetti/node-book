@@ -1,4 +1,6 @@
+// Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
 const mongoose = require('mongoose')
+// Creating a Model through a Schema interface
 const Schema = mongoose.Schema;
 
 const BlogPostSchema = new Schema({
