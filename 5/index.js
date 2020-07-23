@@ -53,8 +53,15 @@ app.get("/search", (req, res) => {
   res.render("search");
 });
 
-app.get("/post", (req, res) => {
-  res.render("post");
+// assigning string after post the vairable id that can be accessed in req.params.id
+app.get("/post/:id", async (req, res) => {
+  console.log(req.params)
+  const blogpost = await BlogPost.findById(req.params.id)
+  console.log(blogpost)
+  res.render("post", {
+    blogpost
+  });
+
 });
 
 app.get("/posts/new", (req, res) => {
