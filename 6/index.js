@@ -5,6 +5,7 @@ const ejs = require("ejs"); // templating engine
 const mongoose = require("mongoose"); // MongoDB Connector
 const bodyParser = require("body-parser") // Parse incoming request bodies in a middleware before your handlers, available under the req.body property
 const morgan = require('morgan') // HTTP request logger
+const fileUpload = require('express-fileupload') // file uploader middleware
 
 
 
@@ -20,6 +21,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
+app.use(fileUpload())
 
 // database connection
 mongoose.connect("mongodb://localhost:27017/my_database", {
@@ -68,8 +70,14 @@ app.get("/posts/new", (req, res) => {
   res.render("create");
 });
 
-app.post("/posts/store", async (req, res) => {
+app.post("/posts/store", (req, res) => {
   // console.log(req.body)
-  await BlogPost.create(req.body)
-  res.redirect('/')
+  let image = req.files.image;
+  image.mv(path.resolve(__dirname, 'public/img', image.name), async (error) => {
+    await BlogPost.create({
+      ...req.body, // spread operator
+      image: '/img/' + image.name
+    })
+    res.redirect('/')
+  })
 }) 
