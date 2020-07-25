@@ -7,8 +7,6 @@ const bodyParser = require("body-parser") // Parse incoming request bodies in a 
 const morgan = require('morgan') // HTTP request logger
 const fileUpload = require('express-fileupload') // file uploader middleware
 
-
-
 // imports
 const BlogPost = require('./models/BlogPost.js')
 
