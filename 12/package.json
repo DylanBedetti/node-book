@@ -58,5 +58,5 @@
     "merge-stream": "2.0.0",
     "nodemon": "^2.0.4"
   },
-  "main": "gulpfile.js"
+  "main": "index.js"
 }
